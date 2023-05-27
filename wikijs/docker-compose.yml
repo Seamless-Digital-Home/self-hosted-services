@@ -1,0 +1,9 @@
+version: "3"
+services:
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "3080:3000"
