@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  shlink:
+    image: shlinkio/shlink:stable
+    restart: always
+    env_file: .env
+    ports:
+      - 0.0.0.0:6002:8080
+
+  shlink-web-client:
+    image: shlinkio/shlink-web-client
+    restart: always
+    ports:
+      - 0.0.0.0:6001:80
