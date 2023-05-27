@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  bitwarden:
+    env_file:
+      - settings.env
+    image: bitwarden/self-host:beta
+    restart: always
+    ports:
+      - "6000:6000"
+    volumes:
+      - bitwarden:/etc/bitwarden
+
+volumes:
+  bitwarden:
