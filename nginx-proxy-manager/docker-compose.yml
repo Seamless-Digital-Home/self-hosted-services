@@ -1,0 +1,22 @@
+version: "3"
+
+networks:
+  proxy:
+    external: true
+
+services:
+  reverse-proxy:
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "81:81" # Добавляем порты, которые надо форвардить через Streams
+    environment:
+      DB_SQLITE_FILE: "/data/database.sqlite"
+      DISABLE_IPV6: "true"
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy
