@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  picoshare:
+    image: mtlynch/picoshare
+    environment:
+      - PORT=4001
+      - PS_SHARED_SECRET=<YOUR_SECRET>
+      - PS_BEHIND_PROXY=true
+    ports:
+      - 4001:4001
+    command: -db /data/store.db
+    volumes:
+      - pico_files:/data
+
+volumes:
+  pico_files:
+    driver: local
